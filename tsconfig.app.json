@@ -22,5 +22,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "Auth.ts"]
+  "include": ["src", "Auth.ts", "backend/src/firebase.js"]
 }
