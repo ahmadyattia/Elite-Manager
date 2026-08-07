@@ -1,0 +1,43 @@
+.header {
+  font-family: var(--primary-font);
+  margin: 0.5rem 1rem;
+}
+
+.form {
+  font-family: var(--primary-font);
+  min-height: 50vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: min-content;
+}
+
+.form input,
+.form button[type="submit"] {
+  width: 10rem;
+  font-family: var(--primary-font);
+}
+
+.form input {
+  margin: 0.2rem 0 0.7rem 0;
+  padding: 0.2rem;
+  border: 1px solid lightgray;
+}
+
+.form button[type="submit"] {
+  padding: 0.4rem;
+  border: 0;
+  background-color: #ebebeb;
+  cursor: pointer;
+}
+
+.form label {
+  align-self: flex-start;
+}
+
+.error {
+  color: red;
+  font-size: 0.75rem;
+}
