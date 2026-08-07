@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import { useAuthStore } from "./data/useAuthState";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -12,19 +12,19 @@ function App() {
   //   (state: any) => state.isAdminAuthenticated,
   // );
   const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(checkSessionCookie, 5000);
+    const interval = setInterval(checkSessionCookie, 100000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // useEffect(() => {
-  //   if (!isAuthenticated) {
-  //     navigate("login", { replace: true });
-  //   }
-  // }, [isAuthenticated]);
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("login", { replace: true });
+    }
+  }, [isAuthenticated]);
 
   console.log("isAuthenticated:", isAuthenticated);
 
