@@ -45,16 +45,16 @@ export const loginController = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: isProduction, // true means only passes over HTTPS (turn off for local development)
+      secure: "production", // true means only passes over HTTPS (turn off for local development)
       maxAge: 60 * 15 * 1000,
-      sameSite: isProduction ? "none" : "lax",
+      sameSite: "none",
     });
 
     res.cookie("logged_in", loggedInToken, {
       httpOnly: false,
-      secure: isProduction,
+      secure: "production",
       maxAge: 60 * 15 * 1000,
-      sameSite: isProduction ? "none" : "lax",
+      sameSite: "none",
     });
 
     res.status(200).json({
