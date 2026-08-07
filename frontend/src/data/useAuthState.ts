@@ -25,7 +25,7 @@ export const useAuthStore = create(
               method: "post",
               headers: { "Content-Type": "Application/json" },
               body: credentialsJson,
-              // credentials: "include",
+              credentials: "include",
             },
           );
 
