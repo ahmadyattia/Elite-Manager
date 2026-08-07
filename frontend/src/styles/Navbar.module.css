@@ -1,0 +1,19 @@
+.navbar {
+  height: 50px;
+  background-color: #ebebeb;
+  font-family: var(--primary-font);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar a {
+  display: inline-block;
+  margin: 0.5rem 0.7rem;
+  text-decoration: underline;
+  color: black;
+}
+
+.navbar a:visited {
+  color: black;
+}
