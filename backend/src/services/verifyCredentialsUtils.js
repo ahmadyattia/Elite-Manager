@@ -1,13 +1,29 @@
 import { boolean } from "mathjs";
 
 export const verifySignupCredentials = (req, res, next) => {
+  let isValidFName = false;
+  let isValidLName = false;
   let isValidUsername = false;
   let isValidPassword = false;
   let isValidAdminInput = false;
 
   let responseData = {};
 
-  const { username, password, isAdmin } = req.body;
+  const { fName, lName, username, password, isAdmin } = req.body;
+
+  if (!fName.trim()) {
+    isValidFName = false;
+    responseData.fNameError = "Please enter a first name";
+  } else {
+    isValidFName = true;
+  }
+
+  if (!lName.trim()) {
+    isValidLName = false;
+    responseData.lNameError = "Please enter a last name";
+  } else {
+    isValidLName = true;
+  }
 
   if (username.length < 10 || username.length > 30 || !username.trim()) {
     isValidUsername = false;
@@ -38,7 +54,13 @@ export const verifySignupCredentials = (req, res, next) => {
     isValidAdminInput = true;
   }
 
-  if (!isValidUsername || !isValidPassword || !isValidAdminInput) {
+  if (
+    !isValidFName ||
+    !isValidLName ||
+    !isValidUsername ||
+    !isValidPassword ||
+    !isValidAdminInput
+  ) {
     return res.status(400).json(responseData);
   } else {
     return next();

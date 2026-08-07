@@ -4,7 +4,7 @@ import { saveAccount } from "../services/saveAccount.js";
 import { fetchAccounts } from "../services/fetchAccounts.js";
 
 export const signupController = async (req, res) => {
-  const { username, password, isAdmin } = req.body;
+  const { fName, lName, username, password, isAdmin } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const token = req.cookies.token;
@@ -29,13 +29,13 @@ export const signupController = async (req, res) => {
       existingAccounts.find((account) => account.username === username);
 
     if (userExists) {
-      return res.status(400).json({ error: "user already exists" });
+      return res.status(400).json({ error: "username already exists" });
     }
 
-    await saveAccount(username, hashedPassword, isAdmin);
+    await saveAccount(fName, lName, username, hashedPassword, isAdmin);
 
     res.json({ success: true, message: "signed up successfully!" });
   } catch (error) {
-    res.json({ error: error.message });
+    res.json({ success: false, error: error.message });
   }
 };
