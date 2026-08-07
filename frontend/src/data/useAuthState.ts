@@ -32,6 +32,7 @@ export const useAuthStore = create(
           const responseBody = await response.json();
 
           if (responseBody.success) {
+            localStorage.setItem("loggedIn", "true");
             if (responseBody.isAdmin) {
               set({ isAdminAuthenticated: true, isAuthenticated: true });
             } else {
@@ -93,14 +94,16 @@ export const useAuthStore = create(
           const responseBody = await response.json();
 
           if (responseBody.success) {
+            localStorage.setItem("loggedIn", "false");
             set({ isAuthenticated: false, isAdminAuthenticated: false });
           }
         } catch (error: any) {
           console.error(error.message);
         }
       },
-      checkSessionCookie: () => {
-        if (!document.cookie.includes("logged_in") && get().isAuthenticated) {
+      checkSession: () => {
+        const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+        if (!isLoggedIn && get().isAuthenticated) {
           get().logout();
         }
       },

@@ -38,9 +38,10 @@ export const loginController = async (req, res) => {
     const token = jwt.sign(payload, JWT_SECRET_KEY, {
       expiresIn: sessionDuration,
     });
-    const loggedInToken = jwt.sign({ logged_in: true }, JWT_SECRET_KEY, {
-      expiresIn: sessionDuration,
-    });
+
+    // const loggedInToken = jwt.sign({ logged_in: true }, JWT_SECRET_KEY, {
+    //   expiresIn: sessionDuration,
+    // });
 
     // Check if the current environment is production
     const isProduction = process.env.NODE_ENV === "production";
@@ -52,12 +53,12 @@ export const loginController = async (req, res) => {
       sameSite: isProduction ? "none" : "lax",
     });
 
-    res.cookie("logged_in", loggedInToken, {
-      httpOnly: false,
-      secure: isProduction,
-      maxAge: 60 * 15 * 1000,
-      sameSite: isProduction ? "none" : "lax",
-    });
+    // res.cookie("logged_in", loggedInToken, {
+    //   httpOnly: false,
+    //   secure: isProduction,
+    //   maxAge: 60 * 15 * 1000,
+    //   sameSite: isProduction ? "none" : "lax",
+    // });
 
     res.json({
       success: true,

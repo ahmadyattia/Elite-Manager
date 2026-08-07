@@ -5,9 +5,7 @@ import { Outlet, useNavigate } from "react-router";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const checkSessionCookie = useAuthStore(
-    (state: any) => state.checkSessionCookie,
-  );
+  const checkSession = useAuthStore((state: any) => state.checkSessionCookie);
   // const isAdminAuthenticated = useAuthStore(
   //   (state: any) => state.isAdminAuthenticated,
   // );
@@ -15,7 +13,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(checkSessionCookie, 5000);
+    const interval = setInterval(checkSession, 5000);
 
     return () => clearInterval(interval);
   }, []);
