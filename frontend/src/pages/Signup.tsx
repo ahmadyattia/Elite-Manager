@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useAuthStore } from "../data/useAuthState";
-import { useNavigate } from "react-router";
 import styles from "../styles/Signup.module.css";
 
 const Signup = () => {

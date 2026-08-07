@@ -55,6 +55,7 @@ const Employees = () => {
               </ul>
             );
           })}
+        {error && <p>{error}</p>}
       </div>
     </div>
   );

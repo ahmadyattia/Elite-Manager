@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuthStore } from "../data/useAuthState";
 import { useNavigate } from "react-router";
 import styles from "../styles/Login.module.css";
@@ -7,10 +7,10 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  // const [success, setSuccess] = useState("");
 
   const login = useAuthStore((state: any) => state.login);
-  const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
+  // const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
 
   const navigate = useNavigate();
 

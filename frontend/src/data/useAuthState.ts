@@ -1,16 +1,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { jwtDecode } from "jwt-decode";
-import { useEffect } from "react";
-import { useNavigate, type NavigateFunction } from "react-router";
 
-interface authState {
-  login: (username: string, password: string) => void;
-  signup: (username: string, password: string) => void;
-  token: string | null;
-  setToken: (token: string) => void;
-  clearToken: () => void;
-}
+// interface authState {
+//   login: (username: string, password: string) => void;
+//   signup: (username: string, password: string) => void;
+//   token: string | null;
+//   setToken: (token: string) => void;
+//   clearToken: () => void;
+// }
 
 export const useAuthStore = create(
   persist(

@@ -1,10 +1,7 @@
-import { useEffect, type ReactElement, type ReactNode } from "react";
+import { useEffect } from "react";
 import "./App.css";
-import Login from "./pages/Login";
-import ApptsTable from "./components/ApptsTable";
-import Signup from "./pages/Signup";
 import { useAuthStore } from "./data/useAuthState";
-import { Link, Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Navbar from "./components/Navbar";
 
 function App() {
