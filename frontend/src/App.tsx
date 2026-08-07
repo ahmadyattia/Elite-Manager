@@ -26,6 +26,8 @@ function App() {
     }
   }, [isAuthenticated]);
 
+  console.log("isAuthenticated:", isAuthenticated);
+
   return (
     <div style={{ minHeight: "100vh" }}>
       <header>
