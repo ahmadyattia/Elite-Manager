@@ -8,9 +8,9 @@ function App() {
   const checkSessionCookie = useAuthStore(
     (state: any) => state.checkSessionCookie,
   );
-  const isAdminAuthenticated = useAuthStore(
-    (state: any) => state.isAdminAuthenticated,
-  );
+  // const isAdminAuthenticated = useAuthStore(
+  //   (state: any) => state.isAdminAuthenticated,
+  // );
   const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
   const navigate = useNavigate();
 
