@@ -5,20 +5,20 @@ import { Outlet, useNavigate } from "react-router";
 import Navbar from "./components/Navbar";
 
 function App() {
-  // const checkSessionCookie = useAuthStore(
-  //   (state: any) => state.checkSessionCookie,
-  // );
+  const checkSessionCookie = useAuthStore(
+    (state: any) => state.checkSessionCookie,
+  );
   // const isAdminAuthenticated = useAuthStore(
   //   (state: any) => state.isAdminAuthenticated,
   // );
   const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const interval = setInterval(checkSessionCookie, 5000);
+  useEffect(() => {
+    const interval = setInterval(checkSessionCookie, 5000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (!isAuthenticated) {
