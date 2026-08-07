@@ -10,6 +10,9 @@ import { verifyToken } from "./middleware/verifyToken.js";
 
 const app = express();
 
+// Add this line so Express trusts Render's HTTPS reverse proxy headers
+app.enable("trust proxy");
+
 const PORT = 5000;
 
 // console.log("CORS Origin Target:", `"${process.env.FRONTEND_URL}"`);
