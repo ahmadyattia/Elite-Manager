@@ -20,7 +20,7 @@ export const useAuthStore = create(
 
         try {
           const response = await fetch(
-            "https://elite-manager.onrender.com/login",
+            "https://elite-manager.onrender.com/api/login",
             {
               method: "post",
               headers: { "Content-Type": "Application/json" },
@@ -63,7 +63,7 @@ export const useAuthStore = create(
 
         try {
           const response = await fetch(
-            "https://elite-manager.onrender.com/signup",
+            "https://elite-manager.onrender.com/api/signup",
             {
               method: "post",
               headers: { "Content-Type": "application/json" },
