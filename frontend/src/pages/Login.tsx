@@ -22,7 +22,7 @@ const Login = () => {
       const data = await login(username, password);
 
       if (data.success) {
-        navigate("/home", { replace: true });
+        // navigate("/home", { replace: true });
       } else if (data.usernameError) {
         setError(data.usernameError);
       } else if (data.passwordError) {
