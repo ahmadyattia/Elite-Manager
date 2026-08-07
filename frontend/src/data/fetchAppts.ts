@@ -27,10 +27,13 @@ const fetchAppts = () => {
       setError("");
 
       try {
-        const response = await fetch("http://localhost:5000/api/appointments", {
-          method: "GET",
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://elite-manager.onrender.com/api/appointments",
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
 
         if (response.status === 401) {
           throw new Error("Your session has expired.");

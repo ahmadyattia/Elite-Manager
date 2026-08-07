@@ -17,9 +17,12 @@ const Employees = () => {
     async function fetchEmployees() {
       setError("");
       try {
-        const response = await fetch("http://localhost:5000/api/employees", {
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://elite-manager.onrender.com/api/employees",
+          {
+            credentials: "include",
+          },
+        );
 
         const data = await response.json();
 

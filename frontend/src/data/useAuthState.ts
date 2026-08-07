@@ -19,12 +19,15 @@ export const useAuthStore = create(
         const credentialsJson = JSON.stringify({ username, password });
 
         try {
-          const response = await fetch("http://localhost:5000/api/login", {
-            method: "post",
-            headers: { "Content-Type": "Application/json" },
-            body: credentialsJson,
-            credentials: "include",
-          });
+          const response = await fetch(
+            "https://elite-manager.onrender.com/login",
+            {
+              method: "post",
+              headers: { "Content-Type": "Application/json" },
+              body: credentialsJson,
+              credentials: "include",
+            },
+          );
 
           const responseBody = await response.json();
 
@@ -59,12 +62,15 @@ export const useAuthStore = create(
         const credentialsJson = JSON.stringify(credentials);
 
         try {
-          const response = await fetch("http://localhost:5000/api/signup", {
-            method: "post",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: credentialsJson,
-          });
+          const response = await fetch(
+            "https://elite-manager.onrender.com/signup",
+            {
+              method: "post",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: credentialsJson,
+            },
+          );
 
           return response;
         } catch (error: any) {
@@ -73,9 +79,12 @@ export const useAuthStore = create(
       },
       logout: async () => {
         try {
-          const response = await fetch("http://localhost:5000/api/logout", {
-            credentials: "include",
-          });
+          const response = await fetch(
+            "https://elite-manager.onrender.com/api/logout",
+            {
+              credentials: "include",
+            },
+          );
 
           if (!response.ok) {
             throw new Error("Logout failed.");
