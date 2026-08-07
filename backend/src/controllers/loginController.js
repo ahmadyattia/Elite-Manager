@@ -36,7 +36,7 @@ export const loginController = async (req, res) => {
     const token = jwt.sign(payload, JWT_SECRET_KEY, {
       expiresIn: sessionDuration,
     });
-    const loggedInToken = jwt.sign({}, JWT_SECRET_KEY, {
+    const loggedInToken = jwt.sign({ logged_in: true }, JWT_SECRET_KEY, {
       expiresIn: sessionDuration,
     });
 
