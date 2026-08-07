@@ -31,8 +31,14 @@ export const loginController = async (req, res) => {
       isAdmin: validAccount.isAdmin,
     };
 
-    const token = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: "15m" });
-    const loggedInToken = jwt.sign({}, JWT_SECRET_KEY, { expiresIn: "15m" });
+    const sessionDuration = "15m";
+
+    const token = jwt.sign(payload, JWT_SECRET_KEY, {
+      expiresIn: sessionDuration,
+    });
+    const loggedInToken = jwt.sign({}, JWT_SECRET_KEY, {
+      expiresIn: sessionDuration,
+    });
 
     // Check if the current environment is production
     const isProduction = process.env.NODE_ENV === "production";
