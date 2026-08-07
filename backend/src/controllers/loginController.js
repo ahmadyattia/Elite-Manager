@@ -43,19 +43,32 @@ export const loginController = async (req, res) => {
     // Check if the current environment is production
     const isProduction = process.env.NODE_ENV === "production";
 
-    console.log(isProduction);
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: isProduction, // true means only passes over HTTPS (turn off for local development)
+    //   maxAge: 60 * 15 * 1000,
+    //   sameSite: isProduction ? "none" : "lax",
+    // });
+
+    // res.cookie("logged_in", loggedInToken, {
+    //   httpOnly: false,
+    //   secure: isProduction,
+    //   maxAge: 60 * 15 * 1000,
+    //   sameSite: isProduction ? "none" : "lax",
+    // });
+
     res.cookie("token", token, {
       httpOnly: true,
-      secure: isProduction, // true means only passes over HTTPS (turn off for local development)
+      secure: true, // true means only passes over HTTPS (turn off for local development)
       maxAge: 60 * 15 * 1000,
-      sameSite: isProduction ? "none" : "lax",
+      sameSite: "none",
     });
 
     res.cookie("logged_in", loggedInToken, {
       httpOnly: false,
-      secure: isProduction,
+      secure: true,
       maxAge: 60 * 15 * 1000,
-      sameSite: isProduction ? "none" : "lax",
+      sameSite: "none",
     });
 
     res.status(200).json({
