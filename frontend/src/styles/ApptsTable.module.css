@@ -1,0 +1,39 @@
+.mainContainer {
+  max-width: 100%;
+  overflow: auto;
+  font-family: var(--primary-font);
+}
+
+.mainContainer h1 {
+  font-family: var(--primary-font);
+  margin: 0.5rem 1rem;
+}
+
+.apptsTable {
+  border-collapse: collapse;
+  margin: 0 1rem;
+}
+
+.apptsTable th {
+  text-wrap: nowrap;
+  border: 1px solid lightgrey;
+  padding: 0.8rem;
+}
+
+.apptsTable td {
+  text-wrap: nowrap;
+  border: 1px solid lightgrey;
+  padding: 0.8rem;
+}
+
+.viewDescBtnFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewDescBtn {
+  border: 0;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+}
