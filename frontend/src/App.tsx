@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import { useAuthStore } from "./data/useAuthState";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet } from "react-router";
 import Navbar from "./components/Navbar";
 
 function App() {
