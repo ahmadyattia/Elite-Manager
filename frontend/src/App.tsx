@@ -12,7 +12,7 @@ function App() {
   //   (state: any) => state.isAdminAuthenticated,
   // );
   const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(checkSessionCookie, 5000);
@@ -20,11 +20,11 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("login", { replace: true });
-    }
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (!isAuthenticated) {
+  //     navigate("login", { replace: true });
+  //   }
+  // }, [isAuthenticated]);
 
   console.log("isAuthenticated:", isAuthenticated);
 
