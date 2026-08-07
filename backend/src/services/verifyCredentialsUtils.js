@@ -1,5 +1,3 @@
-import { boolean } from "mathjs";
-
 export const verifySignupCredentials = (req, res, next) => {
   let isValidFName = false;
   let isValidLName = false;
