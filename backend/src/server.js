@@ -10,6 +10,8 @@ import { verifyToken } from "./middleware/verifyToken.js";
 
 const app = express();
 
+process.env.NODE_ENV = "production";
+
 // Add this line so Express trusts Render's HTTPS reverse proxy headers
 app.enable("trust proxy");
 
