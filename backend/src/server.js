@@ -31,7 +31,7 @@ app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/logout", logoutRouter);
 
-// app.use(verifyToken);
+app.use(verifyToken);
 
 app.use("/api/appointments", apptsRouter);
 app.use("/api/employees", employeesRouter);
