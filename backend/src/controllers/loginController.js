@@ -17,7 +17,7 @@ export const loginController = async (req, res) => {
 
     const validPassword = await bcrypt.compare(
       password,
-      accounts.find((account) => account.username === username).hashedPassword,
+      validAccount.hashedPassword,
     );
 
     if (!validPassword) {
@@ -30,6 +30,8 @@ export const loginController = async (req, res) => {
       username,
       isAdmin: validAccount.isAdmin,
     };
+
+    res.status(200);
 
     const sessionDuration = "15m";
 
@@ -57,7 +59,7 @@ export const loginController = async (req, res) => {
       sameSite: isProduction ? "none" : "lax",
     });
 
-    res.status(200).json({
+    res.json({
       success: true,
       message: "logged in successfully!",
       isAdmin: validAccount.isAdmin,
