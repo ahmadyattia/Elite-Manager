@@ -15,7 +15,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(checkSessionCookie, 100000);
+    const interval = setInterval(checkSessionCookie, 5000);
 
     return () => clearInterval(interval);
   }, []);

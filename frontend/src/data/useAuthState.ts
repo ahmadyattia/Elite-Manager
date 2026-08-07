@@ -100,7 +100,7 @@ export const useAuthStore = create(
         }
       },
       checkSessionCookie: () => {
-        if (!document.cookie.includes("logged_in=") && get().isAuthenticated) {
+        if (!document.cookie.includes("logged_in") && get().isAuthenticated) {
           get().logout();
         }
       },
