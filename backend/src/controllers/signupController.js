@@ -7,12 +7,13 @@ export const signupController = async (req, res) => {
   const { fName, lName, username, password, isAdmin } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const token = req.cookies.token;
+  const authHeader = req.headers.authorization;
+  const token = authHeader.split(" ")[1];
 
   try {
-    if (!token) {
-      return res.status(403).json({ error: "Missing or expired token." });
-    }
+    // if (!token) {
+    //   return res.status(403).json({ error: "Missing or expired token." });
+    // }
 
     const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
 

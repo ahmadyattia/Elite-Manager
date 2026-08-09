@@ -27,12 +27,12 @@ app.use(express.json()); // allow the server to read JSON comming from the front
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/logout", logoutRouter);
 
 app.use(verifyToken);
 
+app.use("/api/signup", signupRouter);
 app.use("/api/appointments", apptsRouter);
 app.use("/api/employees", employeesRouter);
 
