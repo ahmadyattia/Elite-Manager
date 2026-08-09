@@ -96,12 +96,8 @@ export const useAuthStore = create(
         const token = localStorage.getItem("token");
         const isExpiredToken = verifyTokenExpiry(token);
         console.log(isExpiredToken);
-        if (isExpiredToken || !get().isAuthenticated) {
-          if (isExpiredToken && !get().isAuthenticated) {
-            get().logout();
-          } else if (isExpiredToken && get().isAuthenticated) {
-            set({ isAuthenticated: false, isAdminAuthenticated: false });
-          }
+        if (isExpiredToken && get().isAuthenticated) {
+          get().logout();
         }
       },
     }),
