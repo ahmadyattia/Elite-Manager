@@ -97,7 +97,11 @@ export const useAuthStore = create(
         const isExpiredToken = verifyTokenExpiry(token);
         console.log(isExpiredToken);
         if (isExpiredToken || !get().isAuthenticated) {
-          get().logout();
+          if (isExpiredToken && !get().isAuthenticated) {
+            get().logout();
+          } else if (isExpiredToken && get().isAuthenticated) {
+            set({ isAuthenticated: false, isAdminAuthenticated: false });
+          }
         }
       },
     }),
