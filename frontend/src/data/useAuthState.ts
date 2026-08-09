@@ -102,7 +102,7 @@ export const useAuthStore = create(
       },
       checkSession: () => {
         const isLoggedIn = localStorage.getItem("loggedIn") === "true";
-        if (!isLoggedIn && get().isAuthenticated) {
+        if (!isLoggedIn || !get().isAuthenticated) {
           get().logout();
         }
       },
