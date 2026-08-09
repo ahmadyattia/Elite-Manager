@@ -104,6 +104,7 @@ export const useAuthStore = create(
       checkSession: () => {
         const token = localStorage.getItem("token");
         const isValidToken = verifyTokenExpiry(token);
+        console.log(isValidToken);
         // const isLoggedIn = localStorage.getItem("loggedIn") === "true";
         if (!isValidToken || !get().isAuthenticated) {
           get().logout();
