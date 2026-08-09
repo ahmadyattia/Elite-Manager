@@ -18,7 +18,7 @@ const Employees = () => {
       setError("");
       try {
         const response = await fetch(
-          `${import.meta.env.BACKEND_URL}/api/employees`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/employees`,
           {
             headers: {
               "Content-Type": "application/json",

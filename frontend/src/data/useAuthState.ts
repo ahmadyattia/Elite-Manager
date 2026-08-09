@@ -13,7 +13,7 @@ export const useAuthStore = create(
 
         try {
           const response = await fetch(
-            `${import.meta.env.BACKEND_URL}/api/login`,
+            `${import.meta.env.VITE_BACKEND_URL}/api/login`,
             {
               method: "post",
               headers: { "Content-Type": "Application/json" },
@@ -56,7 +56,7 @@ export const useAuthStore = create(
 
         try {
           const response = await fetch(
-            `${import.meta.env.BACKEND_URL}/api/signup`,
+            `${import.meta.env.VITE_BACKEND_URL}/api/signup`,
             {
               method: "post",
               headers: {
@@ -75,7 +75,7 @@ export const useAuthStore = create(
       logout: async () => {
         try {
           const response = await fetch(
-            `${import.meta.env.BACKEND_URL}/api/logout`,
+            `${import.meta.env.VITE_BACKEND_URL}/api/logout`,
           );
 
           if (!response.ok) {

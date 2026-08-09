@@ -28,7 +28,7 @@ const fetchAppts = () => {
 
       try {
         const response = await fetch(
-          `${import.meta.env.BACKEND_URL}/api/appointments`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/appointments`,
           {
             method: "GET",
             headers: {
