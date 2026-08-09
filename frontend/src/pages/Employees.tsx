@@ -18,7 +18,7 @@ const Employees = () => {
       setError("");
       try {
         const response = await fetch(
-          "https://elite-manager.onrender.com/api/employees",
+          `${import.meta.env.BACKEND_URL}/api/employees`,
           {
             headers: {
               "Content-Type": "application/json",

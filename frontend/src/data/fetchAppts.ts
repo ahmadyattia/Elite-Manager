@@ -28,7 +28,7 @@ const fetchAppts = () => {
 
       try {
         const response = await fetch(
-          "https://elite-manager.onrender.com/api/appointments",
+          `${import.meta.env.BACKEND_URL}/api/appointments`,
           {
             method: "GET",
             headers: {
