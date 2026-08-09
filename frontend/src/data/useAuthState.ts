@@ -2,14 +2,6 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import verifyTokenExpiry from "../utils/verifyTokenExpiry";
 
-// interface authState {
-//   login: (username: string, password: string) => void;
-//   signup: (username: string, password: string) => void;
-//   token: string | null;
-//   setToken: (token: string) => void;
-//   clearToken: () => void;
-// }
-
 export const useAuthStore = create(
   persist(
     (set, get: any) => ({
@@ -33,7 +25,6 @@ export const useAuthStore = create(
 
           if (responseBody.success) {
             localStorage.setItem("token", responseBody.token);
-            // localStorage.setItem("loggedIn", "true");
             if (responseBody.isAdmin) {
               set({ isAdminAuthenticated: true, isAuthenticated: true });
             } else {
@@ -105,7 +96,6 @@ export const useAuthStore = create(
         const token = localStorage.getItem("token");
         const isExpiredToken = verifyTokenExpiry(token);
         console.log(isExpiredToken);
-        // const isLoggedIn = localStorage.getItem("loggedIn") === "true";
         if (isExpiredToken || !get().isAuthenticated) {
           get().logout();
         }

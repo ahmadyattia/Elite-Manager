@@ -7,10 +7,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  // const [success, setSuccess] = useState("");
 
   const login = useAuthStore((state: any) => state.login);
-  // const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
 
   const navigate = useNavigate();
 
@@ -34,12 +32,6 @@ const Login = () => {
       setError(error.message);
     }
   };
-
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     navigate("/home", { replace: true });
-  //   }
-  // }, [isAuthenticated]);
 
   return (
     <>
