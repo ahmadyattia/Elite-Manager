@@ -5,7 +5,7 @@ import { Outlet, useNavigate } from "react-router";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const checkSession = useAuthStore((state: any) => state.checkSessionCookie);
+  const checkSession = useAuthStore((state: any) => state.checkSession);
   // const isAdminAuthenticated = useAuthStore(
   //   (state: any) => state.isAdminAuthenticated,
   // );
