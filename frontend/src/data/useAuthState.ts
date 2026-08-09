@@ -106,7 +106,7 @@ export const useAuthStore = create(
         const isExpiredToken = verifyTokenExpiry(token);
         console.log(isExpiredToken);
         // const isLoggedIn = localStorage.getItem("loggedIn") === "true";
-        if (!isExpiredToken || !get().isAuthenticated) {
+        if (isExpiredToken || !get().isAuthenticated) {
           get().logout();
         }
       },
