@@ -31,7 +31,10 @@ const fetchAppts = () => {
           "https://elite-manager.onrender.com/api/appointments",
           {
             method: "GET",
-            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           },
         );
 

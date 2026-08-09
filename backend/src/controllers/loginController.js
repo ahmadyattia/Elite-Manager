@@ -24,8 +24,6 @@ export const loginController = async (req, res) => {
       return res.status(400).json({ passwordError: "invalid password." });
     }
 
-    const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-
     const payload = {
       username,
       isAdmin: validAccount.isAdmin,
@@ -33,9 +31,9 @@ export const loginController = async (req, res) => {
 
     res.status(200);
 
-    const sessionDuration = "15m";
+    const sessionDuration = 30;
 
-    const token = jwt.sign(payload, JWT_SECRET_KEY, {
+    const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
       expiresIn: sessionDuration,
     });
 
@@ -44,14 +42,14 @@ export const loginController = async (req, res) => {
     // });
 
     // Check if the current environment is production
-    const isProduction = process.env.NODE_ENV === "production";
+    // const isProduction = process.env.NODE_ENV === "production";
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: isProduction, // true means only passes over HTTPS (turn off for local development)
-      maxAge: 60 * 15 * 1000,
-      sameSite: isProduction ? "none" : "lax",
-    });
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: isProduction, // true means only passes over HTTPS (turn off for local development)
+    //   maxAge: 60 * 15 * 1000,
+    //   sameSite: isProduction ? "none" : "lax",
+    // });
 
     // res.cookie("logged_in", loggedInToken, {
     //   httpOnly: false,
@@ -64,6 +62,7 @@ export const loginController = async (req, res) => {
       success: true,
       message: "logged in successfully!",
       isAdmin: validAccount.isAdmin,
+      token: token,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });

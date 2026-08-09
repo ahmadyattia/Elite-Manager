@@ -20,7 +20,10 @@ const Employees = () => {
         const response = await fetch(
           "https://elite-manager.onrender.com/api/employees",
           {
-            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           },
         );
 

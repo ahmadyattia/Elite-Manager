@@ -25,13 +25,13 @@ export const useAuthStore = create(
               method: "post",
               headers: { "Content-Type": "Application/json" },
               body: credentialsJson,
-              credentials: "include",
             },
           );
 
           const responseBody = await response.json();
 
           if (responseBody.success) {
+            localStorage.setItem("token", responseBody.token);
             localStorage.setItem("loggedIn", "true");
             if (responseBody.isAdmin) {
               set({ isAdminAuthenticated: true, isAuthenticated: true });
@@ -67,8 +67,10 @@ export const useAuthStore = create(
             "https://elite-manager.onrender.com/api/signup",
             {
               method: "post",
-              headers: { "Content-Type": "application/json" },
-              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
               body: credentialsJson,
             },
           );
@@ -82,9 +84,6 @@ export const useAuthStore = create(
         try {
           const response = await fetch(
             "https://elite-manager.onrender.com/api/logout",
-            {
-              credentials: "include",
-            },
           );
 
           if (!response.ok) {
@@ -94,7 +93,7 @@ export const useAuthStore = create(
           const responseBody = await response.json();
 
           if (responseBody.success) {
-            localStorage.setItem("loggedIn", "false");
+            localStorage.removeItem("loggedIn");
             set({ isAuthenticated: false, isAdminAuthenticated: false });
           }
         } catch (error: any) {

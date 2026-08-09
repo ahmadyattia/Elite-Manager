@@ -1,21 +1,18 @@
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
-  //   const authHeader = req.headers["authorization"];
-  //   const token = authHeader && authHeader.split(" ")[1];
+  const authHeader = req.headers.authorization;
 
-  const token = req.cookies.token;
-
-  if (!token) {
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ error: "Access denied. No token provided." });
   }
 
-  const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+  const token = authHeader.split(" ")[1];
 
   try {
-    const verified = jwt.verify(token, JWT_SECRET_KEY);
+    const verified = jwt.verify(token, process.env.JWT_SECRET_KEY);
     req.user = verified; // inject the payload
-    return next();
+    next();
   } catch (error) {
     res.status(401).json({ error: "invalid or expired token." });
   }
