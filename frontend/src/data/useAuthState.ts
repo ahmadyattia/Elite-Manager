@@ -103,10 +103,10 @@ export const useAuthStore = create(
       },
       checkSession: () => {
         const token = localStorage.getItem("token");
-        const isValidToken = verifyTokenExpiry(token);
-        console.log(isValidToken);
+        const isExpiredToken = verifyTokenExpiry(token);
+        console.log(isExpiredToken);
         // const isLoggedIn = localStorage.getItem("loggedIn") === "true";
-        if (!isValidToken || !get().isAuthenticated) {
+        if (!isExpiredToken || !get().isAuthenticated) {
           get().logout();
         }
       },
