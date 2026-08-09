@@ -94,7 +94,7 @@ export const useAuthStore = create(
           const responseBody = await response.json();
 
           if (responseBody.success) {
-            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("token");
             set({ isAuthenticated: false, isAdminAuthenticated: false });
           }
         } catch (error: any) {
