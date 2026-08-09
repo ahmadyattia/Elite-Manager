@@ -15,7 +15,7 @@ const Navbar = () => {
       {isAuthenticated && <Link to={"appointments"}>Appointments</Link>}
       {!isAuthenticated && <Link to={"login"}>Login</Link>}
       {isAuthenticated && <Link to={"employees"}>Employees</Link>}
-      {!isAdminAuthenticated && <Link to={"signup"}>Signup employee</Link>}
+      {isAdminAuthenticated && <Link to={"signup"}>Signup employee</Link>}
       {isAuthenticated && <SignoutBtn />}
     </nav>
   );
