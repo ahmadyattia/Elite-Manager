@@ -31,32 +31,9 @@ export const loginController = async (req, res) => {
 
     res.status(200);
 
-    const sessionDuration = 30;
-
     const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
-      expiresIn: sessionDuration,
+      expiresIn: "15m",
     });
-
-    // const loggedInToken = jwt.sign({ logged_in: true }, JWT_SECRET_KEY, {
-    //   expiresIn: sessionDuration,
-    // });
-
-    // Check if the current environment is production
-    // const isProduction = process.env.NODE_ENV === "production";
-
-    // res.cookie("token", token, {
-    //   httpOnly: true,
-    //   secure: isProduction, // true means only passes over HTTPS (turn off for local development)
-    //   maxAge: 60 * 15 * 1000,
-    //   sameSite: isProduction ? "none" : "lax",
-    // });
-
-    // res.cookie("logged_in", loggedInToken, {
-    //   httpOnly: false,
-    //   secure: isProduction,
-    //   maxAge: 60 * 15 * 1000,
-    //   sameSite: isProduction ? "none" : "lax",
-    // });
 
     res.json({
       success: true,
