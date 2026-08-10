@@ -2,7 +2,6 @@ export const verifySignupCredentials = (req, res, next) => {
   let isValidFName = false;
   let isValidLName = false;
   let isValidUsername = false;
-  let isValidPassword = false;
   let isValidAdminInput = false;
 
   let responseData = {};
@@ -31,18 +30,11 @@ export const verifySignupCredentials = (req, res, next) => {
     isValidUsername = true;
   }
 
-  const includesSpecialCharacters = password.includes();
+  let isValidPassword = !isPasswordValid(password);
 
-  if (
-    password.length < 8 ||
-    !hasSpecialCharacters(password) ||
-    !hasLettersAndNumbers(password)
-  ) {
-    isValidPassword = false;
+  if (!isValidPassword) {
     responseData.passwordError =
       "Password must have 8 or more characters and have at least one character and one digit.";
-  } else {
-    isValidPassword = true;
   }
 
   if (typeof isAdmin !== "boolean") {
@@ -67,7 +59,6 @@ export const verifySignupCredentials = (req, res, next) => {
 
 export const verifyLoginCredentials = (req, res, next) => {
   let isValidUsername = false;
-  let isValidPassword = false;
 
   let responseData = {};
 
@@ -81,18 +72,11 @@ export const verifyLoginCredentials = (req, res, next) => {
     isValidUsername = true;
   }
 
-  const includesSpecialCharacters = password.includes();
+  let isValidPassword = isPasswordValid(password);
 
-  if (
-    password.length < 8 ||
-    !hasSpecialCharacters(password) ||
-    !hasLettersAndNumbers(password)
-  ) {
-    isValidPassword = false;
+  if (!isValidPassword) {
     responseData.passwordError =
-      "Password must have 8 or more characters and have at least one character and one digit.";
-  } else {
-    isValidPassword = true;
+      "Password must have 8 or more characters, one digit, one uppercase and one lowercase.";
   }
 
   if (!isValidUsername || !isValidPassword) {
@@ -102,14 +86,21 @@ export const verifyLoginCredentials = (req, res, next) => {
   }
 };
 
-function hasSpecialCharacters(password) {
-  const regex = /[^a-zA-Z0-9]/;
-  return regex.test(password);
-}
+// function hasSpecialCharacters(password) {
+//   const regex = /[^a-zA-Z0-9]/;
+//   return regex.test(password);
+// }
 
-function hasLettersAndNumbers(password) {
-  const hasLetter = /[a-zA-Z]/.test(password);
-  const hasNumber = /[0-9]/.test(password);
+// function hasLettersAndNumbers(password) {
+//   const hasLetter = /[a-zA-Z]/.test(password);
+//   const hasNumber = /[0-9]/.test(password);
 
-  return hasLetter && hasNumber;
-}
+//   return hasLetter && hasNumber;
+// }
+
+export const isPasswordValid = (password) => {
+  // 1 lowercase, 1 uppercase, 1 number, 1 special character, min length of 8
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+  return passwordRegex.test(password);
+};
