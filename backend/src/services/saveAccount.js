@@ -15,7 +15,14 @@ export const saveAccount = async (
   fName = fName.charAt(0).toUpperCase() + fName.slice(1);
   lName = lName.charAt(0).toUpperCase() + lName.slice(1);
 
-  const hashedCredentials = { fName, lName, username, hashedPassword, isAdmin };
+  const hashedCredentials = {
+    fName,
+    lName,
+    username,
+    hashedPassword,
+    isAdmin,
+    id: newAccountRef.key,
+  };
   try {
     await set(newAccountRef, hashedCredentials);
   } catch (error) {

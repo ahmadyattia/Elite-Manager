@@ -10,6 +10,7 @@ export const fetchAccounts = async () => {
     if (dataSnapshot.exists()) {
       const data = dataSnapshot.val();
       return Object.entries(data).map(([key, value]) => ({
+        key,
         ...value,
       }));
     }
