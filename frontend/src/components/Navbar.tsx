@@ -1,12 +1,8 @@
 import { useAuthStore } from "../data/useAuthState";
-import SignoutBtn from "./SignoutBtn";
 import { Link } from "react-router";
 import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
-  const isAdminAuthenticated = useAuthStore(
-    (state: any) => state.isAdminAuthenticated,
-  );
   const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
 
   return (
