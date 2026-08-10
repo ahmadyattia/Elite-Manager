@@ -1,4 +1,5 @@
 import ServiceCard from "../components/ServiceCard";
+import styles from "../styles/Home.module.css";
 
 const Home = () => {
   const appointmentsCardDescription =
@@ -8,7 +9,7 @@ const Home = () => {
   const signoutCardDescription = "Log out from your account";
 
   return (
-    <div>
+    <div className={styles["services-grid"]}>
       <ServiceCard
         heading="Appointments"
         description={appointmentsCardDescription}

@@ -1,0 +1,14 @@
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+@media (width > 700px) {
+  .services-grid {
+    grid-template-columns: 40vw 40vw;
+    justify-content: center;
+    align-items: center;
+  }
+}

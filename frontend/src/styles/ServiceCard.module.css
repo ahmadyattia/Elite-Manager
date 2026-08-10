@@ -1,13 +1,12 @@
 .card {
-  max-width: 100%;
-  /* max-width: 300px; */
+  width: 100%;
   background-color: #ebebeb;
   padding: 1rem;
   font-family: var(--primary-font);
   border-radius: 5px;
-  margin: 1rem;
   display: flex;
   flex-direction: column;
+  justify-self: center;
 }
 
 .header {
@@ -29,10 +28,4 @@
   border-radius: 5px;
   font-family: var(--primary-font);
   cursor: pointer;
-}
-
-@media (width > 500px) {
-  .card {
-    max-width: 500px;
-  }
 }
