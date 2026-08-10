@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/Employees.module.css";
+import ResetEmployeePassword from "../components/ResetEmployeePassword";
 
 interface Employee {
   fName: string;
@@ -57,6 +58,10 @@ const Employees = () => {
                 </li>
 
                 <li>Username: {employee.username}</li>
+                <li>
+                  Password:{" "}
+                  <ResetEmployeePassword username={employee.username} />
+                </li>
                 <li>Admin: {employee.isAdmin ? "yes" : "no"}</li>
               </ul>
             );
