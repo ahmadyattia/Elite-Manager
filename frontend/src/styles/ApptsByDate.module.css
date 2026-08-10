@@ -1,0 +1,68 @@
+.page {
+  margin: 1rem;
+  max-width: 100%;
+  overflow: auto;
+  font-family: var(--primary-font);
+}
+
+.header {
+  font-family: var(--primary-font);
+  /* margin: 0.5rem 1rem; */
+}
+
+.date-label {
+  display: block;
+  margin: 0.4rem 0;
+}
+
+.date-input {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 0.7rem;
+  background-color: white;
+  color: black;
+  font-family: var(--primary-font);
+}
+
+.apptsTable {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.apptsTable th {
+  text-wrap: nowrap;
+  border: 1px solid lightgrey;
+  padding: 0.8rem;
+}
+
+.apptsTable td {
+  text-wrap: nowrap;
+  border: 1px solid lightgrey;
+  padding: 0.8rem;
+}
+
+.viewDescBtnFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewDescBtn {
+  border: 0;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.date-column-fields {
+  color: red;
+}
+
+.no-appts-message {
+  font-size: 0.75rem;
+  color: green;
+}
+
+.error {
+  color: red;
+  font-size: 0.75rem;
+}

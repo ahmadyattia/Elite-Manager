@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 const Home = () => {
   const appointmentsCardDescription =
     "View the appointments set by you or your customers";
+  const apptsByDateCardDescription = "View appointments by its date";
   const employeesCardDescription = "View and edit your employees' details";
   const signupCardDescription = "Sign up an account for a new employee";
   const signoutCardDescription = "Log out from your account";
@@ -14,6 +15,11 @@ const Home = () => {
         heading="Appointments"
         description={appointmentsCardDescription}
         path="/appointments"
+      />
+      <ServiceCard
+        heading="Appointments by Date"
+        description={apptsByDateCardDescription}
+        path="/appointments/date"
       />
       <ServiceCard
         heading="Employees"

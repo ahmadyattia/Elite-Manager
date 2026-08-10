@@ -14,6 +14,7 @@ import ApptsTable from "./components/ApptsTable.tsx";
 import Signup from "./pages/Signup.tsx";
 import Employees from "./pages/Employees.tsx";
 import { useAuthStore } from "./data/useAuthState.ts";
+import ApptsByDate from "./pages/ApptsByDate.tsx";
 
 function Signout() {
   const logout = useAuthStore((state: any) => state.logout);
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route path="home" element={<Home />} />
       <Route path="appointments" element={<ApptsTable />} />
+      <Route path="appointments/date" element={<ApptsByDate />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
       <Route path="employees" element={<Employees />} />
