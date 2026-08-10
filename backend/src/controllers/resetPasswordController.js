@@ -20,7 +20,7 @@ export const resetPasswordController = async (req, res) => {
 
   if (!username || !newPassword) {
     return res
-      .status(500)
+      .status(400)
       .json({ error: "Missing employee username and/or new password." });
   }
   if (!isPasswordValid(newPassword)) {
