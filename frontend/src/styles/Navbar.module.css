@@ -3,13 +3,13 @@
   background-color: #ebebeb;
   font-family: var(--primary-font);
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  padding: 1rem;
 }
 
 .navbar a {
   display: inline-block;
-  margin: 0.5rem 0.7rem;
   text-decoration: underline;
   color: black;
 }
