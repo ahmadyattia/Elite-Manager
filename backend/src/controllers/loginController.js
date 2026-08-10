@@ -26,6 +26,7 @@ export const loginController = async (req, res) => {
 
     const payload = {
       username,
+      password: validAccount.hashedPassword,
       isAdmin: validAccount.isAdmin,
     };
 
