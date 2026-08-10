@@ -58,11 +58,11 @@ const Employees = () => {
                 </li>
 
                 <li>Username: {employee.username}</li>
+                <li>Admin: {employee.isAdmin ? "yes" : "no"}</li>
                 <li>
                   Password:{" "}
                   <ResetEmployeePassword username={employee.username} />
                 </li>
-                <li>Admin: {employee.isAdmin ? "yes" : "no"}</li>
               </ul>
             );
           })}
