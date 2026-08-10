@@ -15,6 +15,14 @@ const ResetEmployeePassword = ({ username }: { username: string }) => {
     setSuccess(false);
   };
 
+  const handleCancelResetting = () => {
+    setResetPassword(false);
+    setCurrentUserAuthorized(false);
+    setCurrentUserPassword("");
+    setNewPassword("");
+    setRetypedNewPassword("");
+  };
+
   const handleSubmitCurrentUserPassword = async () => {
     console.log("here");
     setResetError("");
@@ -80,15 +88,14 @@ const ResetEmployeePassword = ({ username }: { username: string }) => {
         setSuccess(true);
         setResetPassword(false);
         setCurrentUserAuthorized(false);
+        setCurrentUserPassword("");
+        setNewPassword("");
+        setRetypedNewPassword("");
       } else if (responseBody.error) {
         setResetError(responseBody.error);
       }
     } catch (error: any) {
       setResetError(error.message);
-    } finally {
-      setCurrentUserPassword("");
-      setNewPassword("");
-      setRetypedNewPassword("");
     }
   };
 
@@ -101,7 +108,12 @@ const ResetEmployeePassword = ({ username }: { username: string }) => {
       )}
       {resetPassword && !success && (
         <div className={styles["reset-section"]}>
-          <h2 className={styles["header"]}>Reset Password</h2>
+          <div className={styles["heading"]}>
+            <h2 className={styles["header"]}>Reset Password</h2>
+            <span className={styles["cancel"]} onClick={handleCancelResetting}>
+              Cancel
+            </span>
+          </div>
           {!currentUserAuthorized && (
             <>
               <input
@@ -140,7 +152,7 @@ const ResetEmployeePassword = ({ username }: { username: string }) => {
               </button>
             </div>
           )}
-          {resetError && <span className={styles["error"]}>{resetError}</span>}
+          {resetError && <p className={styles["error"]}>{resetError}</p>}
         </div>
       )}
       {success && (
