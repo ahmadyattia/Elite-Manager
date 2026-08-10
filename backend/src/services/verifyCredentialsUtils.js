@@ -30,11 +30,11 @@ export const verifySignupCredentials = (req, res, next) => {
     isValidUsername = true;
   }
 
-  let isValidPassword = !isPasswordValid(password);
+  let isValidPassword = isPasswordValid(password);
 
   if (!isValidPassword) {
     responseData.passwordError =
-      "Password must have 8 or more characters and have at least one character and one digit.";
+      "Password must contain 8 or more characters, one special character, one uppercase, one lowercase, and one digit.";
   }
 
   if (typeof isAdmin !== "boolean") {
@@ -76,7 +76,7 @@ export const verifyLoginCredentials = (req, res, next) => {
 
   if (!isValidPassword) {
     responseData.passwordError =
-      "Password must have 8 or more characters, one digit, one uppercase and one lowercase.";
+      "Password must contain 8 or more characters, one special character, one uppercase, one lowercase, and one digit.";
   }
 
   if (!isValidUsername || !isValidPassword) {
