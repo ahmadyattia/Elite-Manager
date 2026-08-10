@@ -6,6 +6,8 @@ import { router as loginRouter } from "./routes/login.js";
 import { router as signupRouter } from "./routes/signup.js";
 import { router as logoutRouter } from "./routes/logout.js";
 import { router as employeesRouter } from "./routes/employees.js";
+import { router as validatePasswordRouter } from "./routes/validatePassword.js";
+import { router as resetPasswordRouter } from "./routes/resetPassword.js";
 import { verifyToken } from "./middleware/verifyToken.js";
 
 const app = express();
@@ -35,5 +37,7 @@ app.use(verifyToken);
 app.use("/api/signup", signupRouter);
 app.use("/api/appointments", apptsRouter);
 app.use("/api/employees", employeesRouter);
+app.use("/api/validate-password", validatePasswordRouter);
+app.use("/api/reset-password", resetPasswordRouter);
 
 app.listen(PORT, () => console.log("Server is running on port", PORT));
