@@ -6,7 +6,7 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  justify-self: center;
+  align-self: flex-start;
 }
 
 .header {

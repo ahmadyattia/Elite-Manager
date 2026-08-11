@@ -9,6 +9,5 @@
   .services-grid {
     grid-template-columns: 40vw 40vw;
     justify-content: center;
-    align-items: center;
   }
 }
