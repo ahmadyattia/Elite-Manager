@@ -12,6 +12,7 @@ const ApptsByDate = () => {
   const [activeDescription, setActiveDescription] = useState<string | null>(
     null,
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleDateChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedDate(e.target.value);
@@ -19,6 +20,7 @@ const ApptsByDate = () => {
     setAppts(null);
     setError("");
     setNoApptsMessage("");
+    setIsLoading(true);
 
     const dateJson = JSON.stringify({ date: e.target.value });
 
@@ -60,6 +62,8 @@ const ApptsByDate = () => {
       }
     } catch (error: any) {
       setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -130,6 +134,7 @@ const ApptsByDate = () => {
       {noApptsMessage && (
         <p className={styles["no-appts-message"]}>{noApptsMessage}</p>
       )}
+      {isLoading && <p>Loading appointments...</p>}
       {error && <p className={styles["error"]}>{error}</p>}
     </div>
   );

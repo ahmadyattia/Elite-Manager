@@ -13,10 +13,13 @@ interface Employee {
 const Employees = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchEmployees() {
       setError("");
+      setIsLoading(true);
+
       try {
         const response = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/employees`,
@@ -39,6 +42,8 @@ const Employees = () => {
         }
       } catch (error: any) {
         setError(error.message);
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -67,6 +72,7 @@ const Employees = () => {
             );
           })}
         {error && <p>{error}</p>}
+        {isLoading && <p>Loading employees...</p>}
       </div>
     </div>
   );

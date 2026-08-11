@@ -11,12 +11,14 @@ const Signup = () => {
   const [success, setSuccess] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const signup = useAuthStore((state: any) => state.signup);
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setSuccess("");
+    setIsLoading(true);
 
     try {
       const response = await signup(fName, lName, username, password, isAdmin);
@@ -42,6 +44,8 @@ const Signup = () => {
       }
     } catch (error: any) {
       setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -83,7 +87,9 @@ const Signup = () => {
           />
           <label htmlFor="admin">admin</label>
         </div>
-        <button type="submit">Submit</button>
+        <button disabled={isLoading} type="submit">
+          {isLoading ? "Signing up..." : "Submit"}
+        </button>
         {error && <p className={styles["error"]}>{error}</p>}
         {success && <p className={styles["success"]}>{success}</p>}
       </form>

@@ -7,6 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const login = useAuthStore((state: any) => state.login);
 
@@ -15,6 +16,7 @@ const Login = () => {
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
+    setIsLoading(true);
 
     try {
       const data = await login(username, password);
@@ -30,6 +32,8 @@ const Login = () => {
       }
     } catch (error: any) {
       setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,7 +53,9 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button disabled={isLoading} type="submit">
+          {isLoading ? "Logging in..." : "Submit"}
+        </button>
         {error && <p className={styles["error"]}>*{error}</p>}
       </form>
     </>
