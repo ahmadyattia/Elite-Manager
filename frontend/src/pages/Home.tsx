@@ -1,4 +1,5 @@
 import ServiceCard from "../components/ServiceCard";
+import { useAuthStore } from "../data/useAuthState";
 import styles from "../styles/Home.module.css";
 
 const Home = () => {
@@ -8,6 +9,10 @@ const Home = () => {
   const employeesCardDescription = "View and edit your employees' details";
   const signupCardDescription = "Sign up an account for a new employee";
   const signoutCardDescription = "Log out from your account";
+
+  const isAdminAuthenticated = useAuthStore(
+    (state: any) => state.isAdminAuthenticated,
+  );
 
   return (
     <div className={styles["services-grid"]}>
@@ -26,11 +31,13 @@ const Home = () => {
         description={employeesCardDescription}
         path="/employees"
       />
-      <ServiceCard
-        heading="Sign up an Employee"
-        description={signupCardDescription}
-        path="/signup"
-      />
+      {isAdminAuthenticated && (
+        <ServiceCard
+          heading="Sign up an Employee"
+          description={signupCardDescription}
+          path="/signup"
+        />
+      )}
       <ServiceCard
         heading="Sign out"
         description={signoutCardDescription}
