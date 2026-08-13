@@ -3,8 +3,6 @@ import { get, ref } from "firebase/database";
 import { db } from "../firebase.js";
 
 export default async function apptsController(req, res) {
-  const appointmentsRef = ref(db, "appointments");
-
   try {
     const appts = await fetchAppts();
 
