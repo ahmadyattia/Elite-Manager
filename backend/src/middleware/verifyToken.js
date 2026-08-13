@@ -1,6 +1,12 @@
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
+  const apiKeyHeader = req.headers["api-key"];
+
+  if (apiKeyHeader === process.env.API_KEY) {
+    return next();
+  }
+
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -14,6 +20,6 @@ export const verifyToken = (req, res, next) => {
     req.user = verified; // inject the payload
     next();
   } catch (error) {
-    res.status(401).json({ error: "invalid or expired token." });
+    res.status(401).json({ error: "invalid api key or expired token." });
   }
 };
