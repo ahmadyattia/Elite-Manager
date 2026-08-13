@@ -21,7 +21,7 @@ const PORT = 5000;
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [process.env.FRONTEND_URL, process.env.FRONTEND_CUSTOMERS_URL],
     credentials: true,
   }),
 );
@@ -31,11 +31,11 @@ app.use(cookieParser());
 
 app.use("/api/login", loginRouter);
 app.use("/api/logout", logoutRouter);
+app.use("/api/appointments", apptsRouter); // verify token on get requests
 
 app.use(verifyToken);
 
 app.use("/api/signup", signupRouter);
-app.use("/api/appointments", apptsRouter);
 app.use("/api/employees", employeesRouter);
 app.use("/api/validate-password", validatePasswordRouter);
 app.use("/api/reset-password", resetPasswordRouter);
